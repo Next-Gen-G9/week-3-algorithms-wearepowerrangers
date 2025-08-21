@@ -40,6 +40,7 @@ void addProduct(vector<Product>& products, int& nextId) {
 void displayAllProducts(const vector<Product>& products) {
     // INSTRUCTION:
     // 1. Check if the 'products' vector is empty.
+
     // 2. If it is, print "Inventory is empty."
     // 3. If not, loop through and print each product's details in a clean table format.
     cout << "displayAllProducts function is not implemented yet." << endl;
@@ -48,8 +49,27 @@ void displayAllProducts(const vector<Product>& products) {
 void searchProduct(const vector<Product>& products) {
     // INSTRUCTION:
     // 1. Ask the user to search by ID.
+    int searchId; 
+    cout << "Enter product ID to search: ";
+    cin >> searchId;                
+    
     // 2. Find the product with that ID and print its details.
+    for (const auto& product : products) {
+        if (product.id == searchId) {
+            cout << "Product found: ID=" << product.id 
+                 << ", Name=" << product.name 
+                 << ", Quantity=" << product.quantity 
+                 << ", Price=" << product.price << endl;
+            return; // Exit after finding the product
+        }
+    }
+                 
     // 3. If not found, print a "Product not found" message.
+    if (products.empty()) {
+        cout << "Inventory is empty." << endl;
+    } else {
+        cout << "Product not found." << endl;
+    }
     cout << "searchProduct function is not implemented yet." << endl;
 }
 
