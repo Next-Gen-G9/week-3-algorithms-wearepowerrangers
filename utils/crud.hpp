@@ -16,10 +16,24 @@ using namespace std;
 void addProduct(vector<Product>& products, int& nextId) {
     // INSTRUCTION:
     // 1. Create a new 'Product' object.
+    Product newProduct;
+   
     // 2. Assign it a unique ID from 'nextId', then increase 'nextId' by 1.
+    newProduct.id = nextId++;
     // 3. Ask for the product's name. Use `cin.getline(newProduct.name, 50)` to read it.
+    cout << "Enter product name: ";
+    cin.ignore(); // Clear the input buffer before getline
+    getline(cin, newProduct.name);
+
     // 4. Ask for quantity and price.
+    cout << "Enter product quantity: ";
+    cin >> newProduct.quantity;
+    cout << "Enter product price: ";
+    cin >> newProduct.price;
+
     // 5. Add the new product to the 'products' vector.
+    products.push_back(newProduct);
+    
     cout << "addProduct function is not implemented yet." << endl;
 }
 
