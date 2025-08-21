@@ -16,16 +16,31 @@ using namespace std;
 void addProduct(vector<Product>& products, int& nextId) {
     // INSTRUCTION:
     // 1. Create a new 'Product' object.
+    Product newProduct;
+   
     // 2. Assign it a unique ID from 'nextId', then increase 'nextId' by 1.
+    newProduct.id = nextId++;
     // 3. Ask for the product's name. Use `cin.getline(newProduct.name, 50)` to read it.
+    cout << "Enter product name: ";
+    cin.ignore(); // Clear the input buffer before getline
+    getline(cin, newProduct.name);
+
     // 4. Ask for quantity and price.
+    cout << "Enter product quantity: ";
+    cin >> newProduct.quantity;
+    cout << "Enter product price: ";
+    cin >> newProduct.price;
+
     // 5. Add the new product to the 'products' vector.
+    products.push_back(newProduct);
+    
     cout << "addProduct function is not implemented yet." << endl;
 }
 
 void displayAllProducts(const vector<Product>& products) {
     // INSTRUCTION:
     // 1. Check if the 'products' vector is empty.
+
     // 2. If it is, print "Inventory is empty."
     // 3. If not, loop through and print each product's details in a clean table format.
     cout << "displayAllProducts function is not implemented yet." << endl;
@@ -34,8 +49,27 @@ void displayAllProducts(const vector<Product>& products) {
 void searchProduct(const vector<Product>& products) {
     // INSTRUCTION:
     // 1. Ask the user to search by ID.
+    int searchId; 
+    cout << "Enter product ID to search: ";
+    cin >> searchId;                
+    
     // 2. Find the product with that ID and print its details.
+    for (const auto& product : products) {
+        if (product.id == searchId) {
+            cout << "Product found: ID=" << product.id 
+                 << ", Name=" << product.name 
+                 << ", Quantity=" << product.quantity 
+                 << ", Price=" << product.price << endl;
+            return; // Exit after finding the product
+        }
+    }
+                 
     // 3. If not found, print a "Product not found" message.
+    if (products.empty()) {
+        cout << "Inventory is empty." << endl;
+    } else {
+        cout << "Product not found." << endl;
+    }
     cout << "searchProduct function is not implemented yet." << endl;
 }
 
